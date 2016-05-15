@@ -2,9 +2,6 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     sass = require('gulp-sass');
 
-
-//TASKS
-
 var cwd = process.cwd();
 
 gulp.task('restart', function () {
