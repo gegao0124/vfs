@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
+//TODO redo routes later
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express', pageName : 'index' });
@@ -26,8 +28,8 @@ router.get('/chat', function(req, res){
     res.render('chat', { pageName: 'chat'});
 });
 
-router.post('/signup', function(req, res){
-    console.log(req.body);
-})
+router.post('/register', passport.authenticate('local'), function(req, res){
+
+});
 
 module.exports = router;

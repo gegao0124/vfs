@@ -5,7 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
-var passportlocal = require('passport-local');
+var passportLocal = require('passport-local');
 var passporthttp = require('passport-http');
 var expressSession = require('express-session');
 
@@ -39,6 +39,14 @@ app.use(passport.session());
 
 app.use('/', routes);
 
+passport.use(new passportLocal.Strategy(function(username, password, done){
+    if (username === 'test'){
+        done(null, { id: username, name: username});
+    } else {
+        done(null, null);
+    }
+}));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -70,5 +78,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
 module.exports = app;
+
+
+
